@@ -1,0 +1,4 @@
+requests
+jsonlines
+pyarrow
+Flask
