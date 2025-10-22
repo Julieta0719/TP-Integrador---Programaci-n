@@ -2,3 +2,14 @@ requests
 jsonlines
 pyarrow
 Flask
+Rich
+Texttable
+Typer
+Fire
+Prompt_toolkit
+Rich.traceback
+Blessed
+Halo
+pydantic
+alive-progress
+loguru
