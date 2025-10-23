@@ -1,6 +1,5 @@
 requests
 pyarrow
-Flask
 Rich
 Texttable
 Typer
@@ -12,3 +11,7 @@ Halo
 pydantic
 alive-progress
 loguru
+Textual
+Tabulate
+jsonschema
+click
