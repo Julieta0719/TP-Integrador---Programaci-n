@@ -10,8 +10,8 @@ def obtener_datos(url):
         datos = respuesta.json()
         return datos
 
-    except requests.exceptions.RequestException as e:
-        print(f" Error al conectar con la API: {e}")
+    except requests.exceptions.RequestException as a:
+        print(f" Error al conectar con la API: {a}")
         return []
 
     except json.JSONDecodeError:
@@ -24,8 +24,8 @@ def validar_datos(paises):
     for pais in paises:
         try:
             nombre = pais["name"]["common"]
-            poblacion = pais.get("population", None)
-            superficie = pais.get("area", None)
+            poblacion = pais.get("population")
+            superficie = pais.get("area")
             continente = pais["continents"][0]
 
             if not nombre or not isinstance(poblacion, (int, float)) or not isinstance(superficie, (int, float)):
@@ -60,25 +60,13 @@ def formatear_datos(paises):
 
 def guardar_en_csv(nombre_archivo, datos):
     try:
-        with open(nombre_archivo, mode="w", newline="", encoding="utf-8") as archivo:
+        with open(nombre_archivo, "w", newline="", encoding="utf-8") as archivo:
             escritor = csv.writer(archivo)
             escritor.writerows(datos)
         print(f"Archivo '{nombre_archivo}' guardado correctamente.")
 
-    except IOError as e:
-        print(f"Error al escribir el archivo CSV: {e}")
+    except IOError as a:
+        print(f"Error al escribir el archivo CSV: {a}")
 
-def main():
-    url = "https://restcountries.com/v3.1/all?fields=name,area,continents,population,translations"
-    datos_api = obtener_datos(url)
 
-    if not datos_api:
-        print("No se pudieron obtener datos de la API.")
-        return
 
-    paises_validos = validar_datos(datos_api)
-    datos_formateados = formatear_datos(paises_validos)
-    guardar_en_csv("paises.csv", datos_formateados)
-
-if __name__ == "__main__":
-    main()
