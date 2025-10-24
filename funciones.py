@@ -2,6 +2,7 @@ import requests
 import csv
 import json
 
+
 def obtener_datos(url):
     try:
         respuesta = requests.get(url)
