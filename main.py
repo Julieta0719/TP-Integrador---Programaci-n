@@ -21,3 +21,9 @@ def main():
 if __name__ == "__main__":
     main()
 
+
+#Importación y llamado de funciones del menú
+from funciones_menu import mostrar_menu, preguntar_opcion
+mostrar_menu()
+
+preguntar_opcion()
