@@ -71,3 +71,35 @@ def guardar_en_csv(nombre_archivo, datos):
 
 
 
+def csv_a_lista(nombre_archivo):
+    
+    paises = []
+    try:
+        with open(nombre_archivo, mode="r",newline="", encoding="utf-8") as archivo:
+            lector = csv.DictReader(archivo)
+            for fila in lector:
+                # Normalizar y convertir
+                try:
+                    nombre = fila.get("Nombre", "").strip()
+                    poblacion = int(fila.get("Población", "0").replace(",", "").strip())
+                    superficie = float(fila.get("Superficie", "0").replace(",", "").strip())
+                    continente = fila.get("Continente", "").strip()
+
+                    # Omitir filas sin nombre
+                    if not nombre:
+                        continue
+
+                    pais = {
+                        "Nombre": nombre,
+                        "Población": poblacion,
+                        "Superficie": superficie,
+                        "Continente": continente
+                    }
+                    paises.append(pais)
+                except (ValueError, TypeError):
+                    # Si falla la conversión numérica, saltar esa fila
+                    continue
+        return paises
+    except FileNotFoundError:
+        print("Archivo no encontrado:", nombre_archivo)
+        return []
