@@ -1,11 +1,11 @@
 import os
 from funciones import obtener_datos, validar_datos, formatear_datos, guardar_en_csv
 def main():
-    nombre_archivo = "paises.csv"
+    datos_pais = "paises.csv"
 
     # Verificamos si el CSV ya existe
-    if os.path.exists(nombre_archivo):
-        print(f"El archivo '{nombre_archivo}' ya existe.")
+    if os.path.exists(datos_pais):
+        print(f"El archivo '{datos_pais}' ya existe.")
         print("Se omite la descarga desde la API.")
         return 
     url = "https://restcountries.com/v3.1/all?fields=name,area,continents,population,translations"
