@@ -1,6 +1,14 @@
 import requests
 import csv
 import json
+from rich.console import Console
+from rich.traceback import install
+from rich.panel import Panel
+from rich.progress import track
+from loguru import logger
+
+console = Console()
+install(show_locals=True)
 
 
 def obtener_datos(url):
@@ -22,7 +30,7 @@ def obtener_datos(url):
 def validar_datos(paises):
     paises_validos = []
 
-    for pais in paises:
+    for pais in track(paises, description="[green]Procesando países...[/green]"):
         try:
             nombre = pais["name"]["common"]
             poblacion = pais.get("population")

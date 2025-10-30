@@ -1,17 +1,25 @@
+from rich.console import Console
+from rich.panel import Panel
+from rich.table import Table
+from rich.align import Align
+from prompt_toolkit import prompt
+from prompt_toolkit.validation import Validator, ValidationError
+from prompt_toolkit.completion import WordCompleter
+from loguru import logger
+
+console = Console()
+
 def mostrar_menu():
     
-    print("------------------------------------")
-    print(" Menú de gestión de datos de países")
-    print("------------------------------------\n" \
-    " Opciones interactivas:")
-
-    print("------------------------------------\n" \
+    console.print(Panel(
+    "------------------------------------\n" \
     " [1]: Buscar un país por su nombre\n" \
     " [2]: Filtrar países\n" \
     " [3]: Ordenar países\n" \
     " [4]: Mostrar estadísticas\n"
     " [5]: Salir\n" 
-    "------------------------------------")
+    "------------------------------------",
+    title="Menu principal", subtitle="Seleccione una opcion",style="bold cyan"))
 
 def preguntar_opcion():
     
@@ -46,6 +54,6 @@ def preguntar_opcion():
             else:
                 print()
         else:
-            print("La opcion debe ser un numero entre 1 y 4")
+            print("La opcion debe ser un numero entre 1 y 5")
             menu_flag = True
 
