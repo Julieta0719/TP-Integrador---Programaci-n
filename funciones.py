@@ -59,23 +59,23 @@ def formatear_datos(paises):
 
     return filas
 
-def guardar_en_csv(nombre_archivo, datos):
+def guardar_en_csv(datos_pais, datos):
     try:
-        with open(nombre_archivo, "w", newline="", encoding="utf-8") as archivo:
+        with open(datos_pais, "w", newline="", encoding="utf-8") as archivo:
             escritor = csv.writer(archivo)
             escritor.writerows(datos)
-        print(f"Archivo '{nombre_archivo}' guardado correctamente.")
+        print(f"Archivo '{datos_pais}' guardado correctamente.")
 
     except IOError as a:
         print(f"Error al escribir el archivo CSV: {a}")
 
 
 
-def csv_a_lista(nombre_archivo):
+def csv_a_lista(datos_pais):
     
     paises = []
     try:
-        with open(nombre_archivo, mode="r",newline="", encoding="utf-8") as archivo:
+        with open(datos_pais, mode="r",newline="", encoding="utf-8") as archivo:
             lector = csv.DictReader(archivo)
             for fila in lector:
                 # Normalizar y convertir
@@ -101,5 +101,5 @@ def csv_a_lista(nombre_archivo):
                     continue
         return paises
     except FileNotFoundError:
-        print("Archivo no encontrado:", nombre_archivo)
+        print("Archivo no encontrado:", datos_pais)
         return []
