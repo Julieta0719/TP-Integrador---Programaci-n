@@ -96,10 +96,6 @@ from funciones_validaciones import validar_pais, validacion_exacta, validacion_p
 
 
 
-
-
-
-
 #Funcion de la opcion 1 (Buscar un país por su nombre)
 def buscar_pais():
     limpiar_consola()
