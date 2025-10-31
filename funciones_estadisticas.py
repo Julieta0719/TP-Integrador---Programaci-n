@@ -1,5 +1,5 @@
 import csv
-
+from datos_consola import console
 from funciones_menu import limpiar_consola
 
 def buscar_mayor_poblacion():
@@ -16,8 +16,8 @@ def buscar_mayor_poblacion():
         #Buscar la mayor cantidad de población
         mayor_poblacion = max(paises, key=lambda poblacion: int(poblacion["Población"]))
 
-        print("---País con mayor población---")
-        print(mayor_poblacion["Nombre"], mayor_poblacion["Población"])
+        console.print("[titulo]---País con mayor población---[/titulo]")
+        console.print(f"[opcion]{mayor_poblacion["Nombre"]}[/opcion], [exito]{mayor_poblacion["Población"]}[/exito]")
 
 
 def buscar_menor_poblacion():
@@ -34,8 +34,8 @@ def buscar_menor_poblacion():
         #Buscar la menor cantidad de población
         menor_poblacion = min(paises, key=lambda poblacion: int(poblacion["Población"]))
 
-        print("---País con menor población---")
-        print(menor_poblacion['Nombre'], menor_poblacion['Población'])
+        console.print("[titulo]---País con menor población---[/titulo]")
+        console.print(f"[opcion]{menor_poblacion["Nombre"]}[/opcion], [exito]{menor_poblacion["Población"]}[/exito]")
 
 
 def promedio_poblaciones():
@@ -59,8 +59,8 @@ def promedio_poblaciones():
             #Sacar el promedio
             promedio_poblacion = suma_poblacion //250
 
-    print("---Promedio de la población---")
-    print(promedio_poblacion)
+    console.print("[titulo]---Promedio de la población---[/titulo]")
+    console.print(f"[exito]{promedio_poblacion}[/exito]")
 
 
 def promedio_superficies():
@@ -84,8 +84,8 @@ def promedio_superficies():
             #Sacar el promedio
             promedio_superficie = suma_superficie //250
 
-    print("---Promedio de la superficie---")
-    print(promedio_superficie)
+    console.print("[titulo]---Promedio de la superficie---[/titulo]")
+    console.print(f"[exito]{promedio_superficie}[/exito]")
     
 
 
@@ -105,6 +105,6 @@ def contar_pais_por_continente():
                     contador[continente] = 1
                 else:
                     contador[continente] += 1
-        print("---Continentes y sus paises---")
+        console.print("[titulo]---Continentes y sus paises---[/titulo]")
         for continente, cantidad in contador.items():
-            print(f"--{continente}: {cantidad} paises")
+            console.print(f"[exito]--{continente}: {cantidad} paises[/exito]")

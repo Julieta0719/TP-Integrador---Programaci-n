@@ -1,18 +1,19 @@
 import os
 from funciones import obtener_datos, validar_datos, formatear_datos, guardar_en_csv
+from datos_consola import console
 def main():
     datos_pais = "paises.csv"
 
     # Verificamos si el CSV ya existe
     if os.path.exists(datos_pais):
-        print(f"El archivo '{datos_pais}' ya existe.")
-        print("Se omite la descarga desde la API.")
+        console.print(f"[info]El archivo '{datos_pais}' ya existe.[/info]")
+        console.print("[advertencia]Se omite la descarga desde la API.[/advertencia]")
         return 
     url = "https://restcountries.com/v3.1/all?fields=name,area,continents,population,translations"
     datos_api = obtener_datos(url)
 
     if not datos_api:
-        print("No se pudieron obtener datos de la API.")
+        console.print("[advertencia]No se pudieron obtener datos de la API.[/advertencia]")
         return
 
     paises_validos = validar_datos(datos_api)

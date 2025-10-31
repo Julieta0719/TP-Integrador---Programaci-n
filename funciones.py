@@ -6,10 +6,21 @@ from rich.traceback import install
 from rich.panel import Panel
 from rich.progress import track
 from loguru import logger
-
+from datos_consola import console
 console = Console()
 install(show_locals=True)
-
+def menu_retorno():
+    while True:
+        print("""-----Que deseas hacer ahora?-----
+        1) Volver al menu anterior
+        2) Seguir en el menu actual
+    ---------------------------------""")
+        opcion = input("Selecciona una opcion (1 o 2): ").strip()
+        if opcion in ["1","2"]:
+            return opcion == "1"
+            
+        else:
+            print("[advertencia]La opcion ingresada es incorrecta, intente de nuevo[/advertencia]")
 
 def obtener_datos(url):
     try:
@@ -20,11 +31,11 @@ def obtener_datos(url):
         return datos
 
     except requests.exceptions.RequestException as a:
-        print(f" Error al conectar con la API: {a}")
+        print(f"[adevertencia] Error al conectar con la API: {a}[/advertencia]")
         return []
 
     except json.JSONDecodeError:
-        print("Error al convertir la respuesta a JSON.")
+        print("[advertencia]Error al convertir la respuesta a JSON.[/advertencia]")
         return []
     
 def validar_datos(paises):
@@ -72,10 +83,10 @@ def guardar_en_csv(datos_pais, datos):
         with open(datos_pais, "w", newline="", encoding="utf-8") as archivo:
             escritor = csv.writer(archivo)
             escritor.writerows(datos)
-        print(f"Archivo '{datos_pais}' guardado correctamente.")
+        print(f"[exito]Archivo '{datos_pais}' guardado correctamente.[/exito]")
 
     except IOError as a:
-        print(f"Error al escribir el archivo CSV: {a}")
+        print(f"[advertencia]Error al escribir el archivo CSV: {a}[/advertencia]")
 
 
 
@@ -109,5 +120,5 @@ def csv_a_lista(datos_pais):
                     continue
         return paises
     except FileNotFoundError:
-        print("Archivo no encontrado:", datos_pais)
+        print(f"[advertencia]Archivo no encontrado: {datos_pais}[/advertencia]")
         return []

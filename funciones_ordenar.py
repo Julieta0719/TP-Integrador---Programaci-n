@@ -1,12 +1,12 @@
 import csv
 from funciones_menu import limpiar_consola
-
+from datos_consola import console
 #Funcion para ordenar los países alfabéticamente
 def ordenar_paises():
 
     limpiar_consola()
 
-    print("---Países en orden alfabético---")
+    console.print("[titulo]---Países en orden alfabético---[/titulo]")
 
     #Abrir el archivo csv en modo lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
@@ -21,7 +21,7 @@ def ordenar_paises():
 
         #Mostrar los países ordenados
         for pais in paises_ordenados:
-            print(pais["Nombre"])
+            console.print(f"[exito]{pais["Nombre"]}[/exito]")
 
 
 
@@ -30,7 +30,7 @@ def ordenar_poblacion():
     
     limpiar_consola()
 
-    print("---Poblaciones de menor a mayor---")
+    console.print("[titulo]---Poblaciones de menor a mayor---[/titulo]")
 
     #Abrir el archivo csv en modo lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
@@ -45,7 +45,7 @@ def ordenar_poblacion():
         
         #Mostrar las poblaciones ordenadas
         for poblacion in poblaciones_ordenadas:
-            print(poblacion["Población"])
+            console.print(f"[opcion]{poblacion["Nombre"]}[/opcion]  | [opcion]{poblacion["Población"]}[/opcion]")
 
 
 
@@ -55,7 +55,7 @@ def ordenar_superficie():
 
     limpiar_consola()
 
-    print("---Superficies en orden ascendente---")
+    console.print("[titulo]---Superficies en orden ascendente---[/titulo]")
 
     #Abrir el archivo csv en modo lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
@@ -70,4 +70,4 @@ def ordenar_superficie():
         
         #Mostrar las poblaciones ordenadas
         for superficie in superficies_ordenadas:
-            print(superficie["Superficie"])
+            console.print(f"[opcion]{superficie["Nombre"]}[/opcion]   |  [exito]{superficie["Superficie"]}[/exito]")
