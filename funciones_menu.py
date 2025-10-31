@@ -3,6 +3,8 @@ import os
 from funciones_validaciones import validar_pais, validacion_exacta, validacion_parcial
 from funciones import menu_retorno
 from datos_consola import console
+from rich.theme import Theme
+from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 from rich.align import Align
@@ -13,11 +15,20 @@ from halo import Halo
 from alive_progress import alive_bar
 from loguru import logger
 from rich.traceback import install
-from prompt_toolkit import prompt
+from prompt_toolkit import prompt as pt_prompt
 from prompt_toolkit.completion import WordCompleter
 
+color = Theme({
+    "advertencia": "bold red",
+    "info": "bold cyan",
+    "exito": "bold green"
+})
+console = Console(theme=color)
+
 install(show_locals=True)
-logger.add("logs/actividad.log", rotation="500", backtrace=True, diagnose=True)
+if not os.path.exists("logs"):
+    os.makedirs("logs")
+logger.add("logs/actividad.log", rotation="500 KB", backtrace=True, diagnose=True)
 
 def animacion(ani):
     def decoracion(*args, **kwargs):
@@ -97,14 +108,12 @@ def menu_filtraciones():
     while True:
         limpiar_consola()
 
-        print("""             ---------------------------------------------
-                        ---Menú de Filtraciones---             
-                ---------------------------------------------
-                [1]: Filtrar país por continente
-                [2]: Filtrar países por rango de población
-                [3]: Filtrar países por rango de superficie
-                ---------------------------------------------
-                """)
+        opciones = [
+            "Filtrar pais por continente",
+            "Filtrar paises por rango de poblacion",
+            "Filtrar paises por rango de superficie"
+        ]
+        tabla_menu("Menu de Filtraciones", opciones)
         #Bucle while del menú
         filtraciones_flag: bool = True
         while filtraciones_flag:
@@ -147,14 +156,12 @@ def menu_ordenamiento():
     while True:
         limpiar_consola()
 
-        print("""             ---------------------------------------------
-                        ---Menú de Ordenamiento---             
-                ---------------------------------------------
-                [1]: Ordenar países alfabeticamente
-                [2]: Ordenar población de menor a mayor
-                [3]: Ordenar superficie de forma ascendente
-                ---------------------------------------------
-                """)
+        opciones = [
+            "Ordenar países alfabeticamente",
+            "Ordenar población de menor a mayor",
+            "Ordenar superficie de forma ascendente"
+        ]
+        tabla_menu("Menu de ordenamientos", opciones)
         #Bucle while del menú
         ordenamiento_flag: bool = True
         while ordenamiento_flag:
@@ -198,15 +205,14 @@ def menu_estadisticas():
     while True:
         limpiar_consola()
 
-        print("""             ---------------------------------------------
-                        ---Menú de Estadísticas---             
-                ---------------------------------------------
-                [1]: País con mayor y menor población
-                [2]: Promedio de todas las poblaciones
-                [3]: Promedio de todas las superficies
-                [4]: Cantidad de países por continente
-                ---------------------------------------------
-                """)
+        opciones = [
+            "País con mayor y menor población",
+            "Promedio de todas las poblaciones",
+            "Promedio de todas las superficies",
+            "Cantidad de países por continente",
+        ]
+
+        tabla_menu("Menu de Promedios", opciones)
         #Bucle while del menú
         estadisticas_flag: bool = True
         while estadisticas_flag:
@@ -250,23 +256,22 @@ def menu_estadisticas():
 def preguntar_opcion():
 
     limpiar_consola()
-
+    bienvenida()
     #Bucle while para consultar el número cuantas veces sea necesario (si se ingresa mal)
     menu_flag: bool = True
     while menu_flag:
+        limpiar_consola()
 
-        print("--------------------------------------")
-        print("  Menú de gestión de datos de países")
-        print("--------------------------------------\n" \
-        " Opciones interactivas:")
+        opciones = [
+            " Buscar un país por su nombre",
+            " Filtrar países",
+            " Ordenar países", 
+            " Mostrar estadísticas",
+            " Salir"
+        ]
 
-        print("--------------------------------------\n" \
-        " [1]: Buscar un país por su nombre \n" \
-        " [2]: Filtrar países               \n" \
-        " [3]: Ordenar países               \n" \
-        " [4]: Mostrar estadísticas         \n"
-        " [5]: Salir                        \n" 
-        "--------------------------------------")
+        tabla_menu("Menu Principal", opciones)
+        
 
         opcion = input("Por favor, ingrese el número de la opción de la que desea interactuar: ")
 
@@ -292,7 +297,7 @@ def preguntar_opcion():
                 
                 
             elif opcion == 5:
-                console.print("[exito]---Gracias por usar el programa!---[/exito]")
+                console.print(Panel("---Gracias por usar el programa!---", style="bold green"))
                 menu_flag = False
             else:
                 console.print()
