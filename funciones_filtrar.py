@@ -100,8 +100,8 @@ def filtrar_por_continente():
 def filtrar_por_poblacion():
 
     #Pedir los limites de rango
-    rango_minimo = input("Ingrese el límite de rango mínimo: ")
-    rango_maximo = input("Ingrese el límite de rango máximo: ")
+    rango_minimo = input("Ingrese el límite de rango mínimo de la población: ")
+    rango_maximo = input("Ingrese el límite de rango máximo de la población: ")
 
     #Validación de los rangos ingresados
     if (rango_minimo.isdigit() and rango_minimo.strip() != "") and (rango_maximo.isdigit() and rango_maximo.strip() != ""):
@@ -111,7 +111,7 @@ def filtrar_por_poblacion():
         rango_maximo = int(rango_maximo)
         print(" ")
     else:
-        print("El rango mínimo o máximo no son validos")
+        print("Incorrecto")
 
     #Abrir el archivo csv para lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
@@ -123,17 +123,21 @@ def filtrar_por_poblacion():
             #Asignar a una variable el número de población en la linea actual
             poblacion = int(linea["Población"])
 
-            #Si la poblacion es mayor o igual al rango min, y la poblacion es menor o igual al rango max, se imprime
-            if poblacion >= rango_minimo and poblacion <= rango_maximo:
-                print(linea["Nombre"],"-", poblacion)
+            try:
+                #Si la poblacion es mayor o igual al rango min, y la poblacion es menor o igual al rango max, se imprime
+                if poblacion >= rango_minimo and poblacion <= rango_maximo:
+                    print(linea["Nombre"], poblacion)
+            except TypeError:
+                print("Los limites de rango no son validos, debe ingresar un entero positivo")
+                break
 
 
 #Funcion de filtrado por rango de superficie (Opcion 3 del menu de filtración)
 def filtrar_por_superficie():
 
     #Pedir los limites de rango
-    rango_minimo = input("Ingrese el límite de rango mínimo: ")
-    rango_maximo = input("Ingrese el límite de rango máximo: ")
+    rango_minimo = input("Ingrese el límite de rango mínimo de la superficie: ")
+    rango_maximo = input("Ingrese el límite de rango máximo de la superficie: ")
 
     #Validación de los rangos
     if (rango_minimo.replace(".","",1).isdigit()) and (rango_maximo.replace(".","",1).isdigit()):
@@ -143,7 +147,8 @@ def filtrar_por_superficie():
         rango_maximo = float(rango_maximo)
         print(" ")
     else:
-        print("El rango mínimo o máximo no son validos")
+        print("Los limites de los rangos no son validos, debe ingresar decimales")
+        
 
     #Abrir el archivo csv para lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
@@ -157,5 +162,6 @@ def filtrar_por_superficie():
 
             #Si la poblacion es mayor o igual al rango min, y la poblacion es menor o igual al rango max, se imprime
             if superficie >= rango_minimo and superficie <= rango_maximo:
-                print(linea["Nombre"],"-", superficie)
+                print(linea["Nombre"], superficie)
+            
 

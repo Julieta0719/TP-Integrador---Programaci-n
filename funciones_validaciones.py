@@ -30,7 +30,7 @@ def validacion_exacta(pais_buscado):
                 print("El nombre ingrsado no se encuentra en el archivo")
 
 
-#Validacion de busqueda de país de forma parcial(en proceso)
+#Validacion de busqueda de país de forma parcial
 def validacion_parcial(pais_buscado):
 
     #Se abre el archivo csv para lectura
@@ -40,6 +40,13 @@ def validacion_parcial(pais_buscado):
         #Bucle for para leer cada linea del archivo
         for linea in lectura:
             
-            pass
+            #Asignar a una variable el dato de la linea actual
+            paises = linea["Nombre"]
 
+            #Si el string ingresado esta en el nombre del pais se muestran sus datos
+            if pais_buscado in paises:
+                print(f"""Nombre: {linea["Nombre"]}
+                        Población: {linea["Población"]}
+                        Superficie: {linea["Superficie"]}
+                        Continente: {linea["Continente"]}""")
 
