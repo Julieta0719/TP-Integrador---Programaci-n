@@ -3,10 +3,74 @@ import os
 from funciones_validaciones import validar_pais, validacion_exacta, validacion_parcial
 from funciones import menu_retorno
 from datos_consola import console
+from rich.table import Table
+from rich.panel import Panel
+from rich.align import Align
+from rich.prompt import Prompt
+from rich.text import Text
+from rich import box
+from halo import Halo
+from alive_progress import alive_bar
+from loguru import logger
+from rich.traceback import install
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+
+install(show_locals=True)
+logger.add("logs/actividad.log", rotation="500", backtrace=True, diagnose=True)
+
+def animacion(ani):
+    def decoracion(*args, **kwargs):
+        spinner = Halo(text='Cargando...', spinner= 'dots', color= 'cyan')
+        spinner.start()
+        try:
+            r = ani(*args, **kwargs)
+        finally:
+            spinner.stop()
+        return r
+    return decoracion
+
+def progreso(ani):
+    def decoracion_p(*args, **kwargs):
+        with alive_bar(4, title=f"Ejecutando {ani.__name__}...") as bar:
+            r = None
+            for _ in range(4):
+                r = ani(*args, **kwargs)
+                bar()
+        return r
+    return decoracion_p
+
+def bienvenida():
+    recepcion = Text("Sistema de gestion de paises", style="bold cyan")
+    presentacion = Text("Desarrollado por Julieta Caceres characan y Matias Ezequiel Maigua", style= "italic yellow")
+    panel = Panel(
+        Align.center(recepcion + "\n" + presentacion),
+        border_style= "bright_blue",
+        padding=(1,3),
+        title="[bold cyan]Bienvenido/a[/bold cyan]",
+    )
+    console.print(panel)
+
+
+def tabla_menu(titulo, opciones):
+    tabla = Table(title=titulo, box=box.ROUNDED, border_style="cyan")
+    tabla.add_column("N", justify="center",style="bold yellow")
+    tabla.add_column("Descripcion", justify="center",style="bold white")
+
+
+    for i, opcion in enumerate(opciones,1):
+        tabla.add_row(str(i),opcion)
+    
+    console.print(tabla)
+
+
+        
 
 #Función para limpiar la consola
 def limpiar_consola():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+bienvenida()
 
 
 #Funcion de la opcion 1 (Buscar un país por su nombre)
