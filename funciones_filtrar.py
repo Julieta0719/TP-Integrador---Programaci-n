@@ -1,5 +1,5 @@
 import csv
-from funciones_menu import limpiar_consola
+from funciones_menu import limpiar_consola, tabla_menu
 from funciones import menu_retorno
 from datos_consola import console
 
@@ -9,17 +9,14 @@ def filtrar_por_continente():
     while True:
         limpiar_consola()
 
-        print("""             -----------------------------------
-                        ---Continentes---             
-                -----------------------------------
-                [1]: África
-                [2]: América
-                [3]: Asia
-                [4]: Europa
-                [5]: Oceanía
-                -----------------------------------
-                """)
-
+        opciones = [
+            "África",
+            "América",
+            "Asia",
+            "Europa",
+            "Oceanía"
+        ]
+        tabla_menu("Filtro Cntinentes", opciones)
         opcion_continente = input("Ingrese la opción del continente: ")
 
         #Validar la opción

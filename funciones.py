@@ -11,16 +11,16 @@ console = Console()
 install(show_locals=True)
 def menu_retorno():
     while True:
-        print("""-----Que deseas hacer ahora?-----
-        1) Volver al menu anterior
-        2) Seguir en el menu actual
-    ---------------------------------""")
+        console.print(Panel.fit("""[bold cyan]-----Que deseas hacer ahora?-----
+    1) Volver al menu anterior
+    2) Seguir en el menu actual
+---------------------------------[/bold cyan]"""))
         opcion = input("Selecciona una opcion (1 o 2): ").strip()
         if opcion in ["1","2"]:
             return opcion == "1"
             
         else:
-            print("[advertencia]La opcion ingresada es incorrecta, intente de nuevo[/advertencia]")
+            console.print("[advertencia]La opcion ingresada es incorrecta, intente de nuevo[/advertencia]")
 
 def obtener_datos(url):
     try:
