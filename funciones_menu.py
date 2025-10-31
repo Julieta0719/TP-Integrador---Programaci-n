@@ -297,7 +297,7 @@ def preguntar_opcion():
                 
                 
             elif opcion == 5:
-                console.print(Panel("---Gracias por usar el programa!---", style="bold green"))
+                console.print(Panel.fit("---Gracias por usar el programa!---", style="bold green"))
                 menu_flag = False
             else:
                 console.print()
