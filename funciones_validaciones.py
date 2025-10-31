@@ -30,7 +30,7 @@ def validacion_exacta(pais_buscado):
                 print("El nombre ingrsado no se encuentra en el archivo")
 
 
-#Validacion de busqueda de país parcial(en proceso)
+#Validacion de busqueda de país de forma parcial(en proceso)
 def validacion_parcial(pais_buscado):
 
     #Se abre el archivo csv para lectura
