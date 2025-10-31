@@ -1,40 +1,125 @@
-import os
+
 
 from funciones_validaciones import validar_pais, validacion_exacta, validacion_parcial
 
-#Función para limpiar la consola
-def limpiar_consola():
-    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+
+
+
+
+
+def mostrar_menu():
+    
+    print("--------------------------------------")
+    print("  Menú de gestión de datos de países")
+    print("--------------------------------------\n" \
+    " Opciones interactivas:")
+
+    print("------------------------------------\n" \
+    "| [1]: Buscar un país por su nombre |\n" \
+    "| [2]: Filtrar países               |\n" \
+    "| [3]: Ordenar países               |\n" \
+    "| [4]: Mostrar estadísticas         |\n"
+    "| [5]: Salir                        |\n" 
+    "------------------------------------")
+
+from funciones_validaciones import validar_pais, validacion_exacta, validacion_parcial
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #Funcion de la opcion 1 (Buscar un país por su nombre)
 def buscar_pais():
-
     limpiar_consola()
-
     pais_buscado = input("Ingrese el nombre del país del que desea consultar su información: ").capitalize()
     validar_pais(pais_buscado)
     validacion_exacta(pais_buscado)
     validacion_parcial(pais_buscado)
 
-
-
 #Funcion de la opcion 2 (Filtraciones)
 def menu_filtraciones():
-
     #Importación de las funciones
     from funciones_filtrar import filtrar_por_continente, filtrar_por_poblacion, filtrar_por_superficie
-
     limpiar_consola()
-
     print("""             ---------------------------------------------
                       ---Menú de Filtraciones---             
              ---------------------------------------------
               [1]: Filtrar país por continente
               [2]: Filtrar países por rango de población
               [3]: Filtrar países por rango de superficie
-             ---------------------------------------------
-             """)
+             ---------------------------------------------""")
     #Bucle while del menú
     filtraciones_flag: bool = True
     while filtraciones_flag:
@@ -122,6 +207,10 @@ def preguntar_opcion():
             else:
                 print()
         else:
-            print("La opción debe ser un número entre 1 y 4")
+            print("La opcion debe ser un numero entre 1 y 5")
             menu_flag = True
 
+#Dejo esto por aca un momento.. (pero va más arriba)
+#Función para limpiar la consola
+def limpiar_consola():
+    os.system('cls' if os.name == 'nt' else 'clear')
