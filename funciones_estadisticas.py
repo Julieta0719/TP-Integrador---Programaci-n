@@ -16,6 +16,7 @@ def buscar_mayor_poblacion():
 
         console.print("[titulo]---País con mayor población---[/titulo]")
         console.print(f"[opcion]{mayor_poblacion['Nombre']}[/opcion], [exito]{mayor_poblacion['Población']}[/exito]")
+        print(" ")
 
 
 def buscar_menor_poblacion():
@@ -32,6 +33,7 @@ def buscar_menor_poblacion():
 
         console.print("[titulo]---País con menor población---[/titulo]")
         console.print(f"[opcion]{menor_poblacion['Nombre']}[/opcion], [exito]{menor_poblacion['Población']}[/exito]")
+        print(" ")
 
 
 def promedio_poblaciones():
