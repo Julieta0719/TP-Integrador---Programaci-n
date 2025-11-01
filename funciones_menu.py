@@ -75,7 +75,7 @@ def tabla_menu(titulo, opciones):
     console.print(tabla)
 
 
-        
+#--------------------------------------------------------------------------------------------------------------------------        
 
 #Función para limpiar la consola
 def limpiar_consola():
@@ -83,22 +83,34 @@ def limpiar_consola():
 
 bienvenida()
 
+#--------------------------------------------------------------------------------------------------------------------------
 
 #Funcion de la opcion 1 (Buscar un país por su nombre)
 def buscar_pais():
     
     limpiar_consola()
     
-    pais_buscado = input("Ingrese el nombre del país del que desea consultar su información: ").capitalize()
-    validar_pais(pais_buscado)
-    validacion_exacta(pais_buscado)
-    validacion_parcial(pais_buscado)
+    pais_buscado = input("Ingrese el nombre del país del que desea consultar su información: ").title().strip()
+    
+    #Guardar el retorno (True/False) de la funcion que valida el dato ingresado
+    pais_valido = validar_pais(pais_buscado)
+
+    #Si el dato ingresado no es valido se retorna para terminar la ejecucion de la funcion
+    if not pais_valido:
+        input("Presione enter para volver al menu principal")
+        return
+
+    #Se guarda el valor retornado (True/False) de la funcion de validacion exacta
+    pais_encontrado = validacion_exacta(pais_buscado)
+
+    #Si se retorna false de la validacion exacta, se buscan coincidencias en la funcion de validacion parcial
+    if not pais_encontrado:
+        validacion_parcial(pais_buscado)
     input("Presione enter para volver al menu principal")
     if input:
         limpiar_consola()
            
-
-
+#--------------------------------------------------------------------------------------------------------------------------
 
 #Funcion de la opcion 2 (Filtraciones)
 def menu_filtraciones():
@@ -148,6 +160,8 @@ def menu_filtraciones():
             limpiar_consola()
             break
 
+#--------------------------------------------------------------------------------------------------------------------------
+
 #Funcion de la opcion 3 (Ordenamiento)
 def menu_ordenamiento():
 
@@ -196,8 +210,9 @@ def menu_ordenamiento():
             limpiar_consola()
             break
 
-#Funcion de la opción 4 (Estadísticas)
+#-----------------------------------------------------------------------------------------------------------------------------------------------
 
+#Funcion de la opción 4 (Estadísticas)
 def menu_estadisticas():
 
     #Imporcion de las funciones
@@ -251,6 +266,8 @@ def menu_estadisticas():
         if menu_retorno():
             limpiar_consola()
             break    
+
+#--------------------------------------------------------------------------------------------------------------------------
 
 #Función del menú
 def preguntar_opcion():

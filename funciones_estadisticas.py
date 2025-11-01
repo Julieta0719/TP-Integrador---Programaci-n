@@ -2,6 +2,8 @@ import csv
 from datos_consola import console
 from funciones_menu import limpiar_consola
 
+#--------------------------------------------------------------------------------------------------------------------------
+#Funcion para encontrar el pais con mayor numero de población (Opcion 1 del menú de estadísticas)
 def buscar_mayor_poblacion():
 
     #Abrir el archivo en modo de lectura
@@ -18,7 +20,8 @@ def buscar_mayor_poblacion():
         console.print(f"[opcion]{mayor_poblacion['Nombre']}[/opcion], [exito]{mayor_poblacion['Población']}[/exito]")
         print(" ")
 
-
+#--------------------------------------------------------------------------------------------------------------------------
+#Funcion para encontrar el país con el menor número de población (Opcion 1 del menú de estadísticas)
 def buscar_menor_poblacion():
 
     #Abrir archivo en modo de lectura
@@ -35,7 +38,9 @@ def buscar_menor_poblacion():
         console.print(f"[opcion]{menor_poblacion['Nombre']}[/opcion], [exito]{menor_poblacion['Población']}[/exito]")
         print(" ")
 
+#--------------------------------------------------------------------------------------------------------------------------
 
+#Funcion para sacar el promedio de las poblaciones de todos los paises (Opción 2 de l menú de estadísticas)
 def promedio_poblaciones():
     
     limpiar_consola()
@@ -60,7 +65,9 @@ def promedio_poblaciones():
     console.print("[titulo]---Promedio de la población---[/titulo]")
     console.print(f"[exito]{promedio_poblacion}[/exito]")
 
+#--------------------------------------------------------------------------------------------------------------------------
 
+#Funcion para sacar el promedio de las superficies de todos los paises (Opcion 3 del menú de estadísticas)
 def promedio_superficies():
     
     limpiar_consola()
@@ -85,8 +92,9 @@ def promedio_superficies():
     console.print("[titulo]---Promedio de la superficie---[/titulo]")
     console.print(f"[exito]{promedio_superficie}[/exito]")
     
+#--------------------------------------------------------------------------------------------------------------------------
 
-
+#Funcion para contar cuantos países hay en cada continente (Opcion 4 del menú de estadísticas)
 def contar_pais_por_continente():
     
     limpiar_consola()

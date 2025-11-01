@@ -3,6 +3,7 @@ from funciones_menu import limpiar_consola, tabla_menu
 from funciones import menu_retorno
 from datos_consola import console
 
+#--------------------------------------------------------------------------------------------------------------------------
 
 #Funcion de filtrado por continente (Opcion 1 del menu de filtración)
 def filtrar_por_continente():
@@ -103,7 +104,7 @@ def filtrar_por_continente():
             limpiar_consola()
             break
 
-
+#--------------------------------------------------------------------------------------------------------------------------
 
 #Funcion de filtrado por rango de población (Opcion 2 del menu de filtración)
 def filtrar_por_poblacion():
@@ -141,6 +142,7 @@ def filtrar_por_poblacion():
                 console.print("[advertencia]Los limites de rango no son validos, debe ingresar un entero positivo[/advertencia]")
                 break
 
+#-------------------------------------------------------------------------------------------------------------------------------------
 
 #Funcion de filtrado por rango de superficie (Opcion 3 del menu de filtración)
 def filtrar_por_superficie():

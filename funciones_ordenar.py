@@ -1,7 +1,10 @@
 import csv
 from funciones_menu import limpiar_consola
 from datos_consola import console
-#Funcion para ordenar los países alfabéticamente
+
+#--------------------------------------------------------------------------------------------------------------------------
+
+#Funcion para ordenar los países alfabéticamente (Opcion 1 del menú de ordenamiento)
 def ordenar_paises():
 
     limpiar_consola()
@@ -23,9 +26,9 @@ def ordenar_paises():
         for pais in paises_ordenados:
             console.print(f"[exito]{pais['Nombre']}[/exito]")
 
+#--------------------------------------------------------------------------------------------------------------------------
 
-
-#Funcion para ordenar poblaciones de menor a mayor
+#Funcion para ordenar poblaciones de menor a mayor (Opción 2 del menú de ordenamiento)
 def ordenar_poblacion():
     
     limpiar_consola()
@@ -47,10 +50,9 @@ def ordenar_poblacion():
         for poblacion in poblaciones_ordenadas:
             console.print(f"[opcion]{poblacion['Nombre']}[/opcion] --> [opcion]{poblacion['Población']}[/opcion]")
 
+#--------------------------------------------------------------------------------------------------------------------------
 
-
-
-#Funcion para ordenar superficies de forma ascendente
+#Funcion para ordenar superficies de forma ascendente (Opcion 3 del menú de ordenamiento)
 def ordenar_superficie():
 
     limpiar_consola()
