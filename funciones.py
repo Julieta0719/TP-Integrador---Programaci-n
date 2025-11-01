@@ -11,7 +11,7 @@ console = Console()
 install(show_locals=True)
 def menu_retorno():
     while True:
-        console.print(Panel.fit("""[bold cyan]-----Que deseas hacer ahora?-----
+        console.print(Panel("""[bold cyan]-----Que deseas hacer ahora?-----
     1) Volver al menu anterior
     2) Seguir en el menu actual
 ---------------------------------[/bold cyan]"""))
