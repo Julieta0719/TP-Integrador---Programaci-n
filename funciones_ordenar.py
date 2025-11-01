@@ -21,7 +21,7 @@ def ordenar_paises():
 
         #Mostrar los países ordenados
         for pais in paises_ordenados:
-            console.print(f"[exito]{pais["Nombre"]}[/exito]")
+            console.print(f"[exito]{pais['Nombre']}[/exito]")
 
 
 
@@ -45,7 +45,7 @@ def ordenar_poblacion():
         
         #Mostrar las poblaciones ordenadas
         for poblacion in poblaciones_ordenadas:
-            console.print(f"[opcion]{poblacion["Nombre"]}[/opcion]  | [opcion]{poblacion["Población"]}[/opcion]")
+            console.print(f"[opcion]{poblacion['Nombre']}[/opcion] --> [opcion]{poblacion['Población']}[/opcion]")
 
 
 
@@ -70,4 +70,4 @@ def ordenar_superficie():
         
         #Mostrar las poblaciones ordenadas
         for superficie in superficies_ordenadas:
-            console.print(f"[opcion]{superficie["Nombre"]}[/opcion]   |  [exito]{superficie["Superficie"]}[/exito]")
+            console.print(f"[opcion]{superficie['Nombre']}[/opcion] --> [exito]{superficie['Superficie']}[/exito]")

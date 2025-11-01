@@ -4,8 +4,6 @@ from funciones_menu import limpiar_consola
 
 def buscar_mayor_poblacion():
 
-    limpiar_consola()
-
     #Abrir el archivo en modo de lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
 
@@ -17,12 +15,10 @@ def buscar_mayor_poblacion():
         mayor_poblacion = max(paises, key=lambda poblacion: int(poblacion["Población"]))
 
         console.print("[titulo]---País con mayor población---[/titulo]")
-        console.print(f"[opcion]{mayor_poblacion["Nombre"]}[/opcion], [exito]{mayor_poblacion["Población"]}[/exito]")
+        console.print(f"[opcion]{mayor_poblacion['Nombre']}[/opcion], [exito]{mayor_poblacion['Población']}[/exito]")
 
 
 def buscar_menor_poblacion():
-
-    limpiar_consola()
 
     #Abrir archivo en modo de lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
@@ -35,7 +31,7 @@ def buscar_menor_poblacion():
         menor_poblacion = min(paises, key=lambda poblacion: int(poblacion["Población"]))
 
         console.print("[titulo]---País con menor población---[/titulo]")
-        console.print(f"[opcion]{menor_poblacion["Nombre"]}[/opcion], [exito]{menor_poblacion["Población"]}[/exito]")
+        console.print(f"[opcion]{menor_poblacion['Nombre']}[/opcion], [exito]{menor_poblacion['Población']}[/exito]")
 
 
 def promedio_poblaciones():

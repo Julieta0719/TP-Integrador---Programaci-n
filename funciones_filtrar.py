@@ -136,7 +136,7 @@ def filtrar_por_poblacion():
             try:
                 #Si la poblacion es mayor o igual al rango min, y la poblacion es menor o igual al rango max, se imprime
                 if poblacion >= rango_minimo and poblacion <= rango_maximo:
-                    console.print(f"[titulo]{linea['Nombre']}[/titulo]  |  [opcion]{poblacion}[/opcion]")
+                    console.print(f"[titulo]{linea['Nombre']}[/titulo] --> [opcion]{poblacion}[/opcion]")
             except (TypeError,ValueError):
                 console.print("[advertencia]Los limites de rango no son validos, debe ingresar un entero positivo[/advertencia]")
                 break
@@ -174,6 +174,6 @@ def filtrar_por_superficie():
 
                 #Si la poblacion es mayor o igual al rango min, y la poblacion es menor o igual al rango max, se imprime
                 if superficie >= rango_minimo and superficie <= rango_maximo:
-                    console.print(f"[titulo]{linea['Nombre']}[/titulo]  |  [exito]{superficie}[/exito]")
+                    console.print(f"[titulo]{linea['Nombre']}[/titulo] --> [exito]{superficie}[/exito]")
             except (TypeError, ValueError):
                 console.print("[advertencia]Datos de rango incorrectos[/advertencia]")
