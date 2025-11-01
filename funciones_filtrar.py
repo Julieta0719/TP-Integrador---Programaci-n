@@ -45,7 +45,7 @@ def filtrar_por_continente():
 
                         #Si el continente de la fila actual coincide con el diccionario de continentes en el indice del continente seleccionado se imprime el país
                         if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila["Nombre"].strip()}[/opcion]")
+                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
 
 
             elif opcion_continente == 2:
@@ -57,7 +57,7 @@ def filtrar_por_continente():
                     for fila in lectura:
 
                         if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila["Nombre"].strip()}[/opcion]")
+                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
 
             elif opcion_continente == 3:
                 console.print("[titulo]---Países de Asia---[/titulo]")
@@ -68,7 +68,7 @@ def filtrar_por_continente():
                     for fila in lectura:
 
                         if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila["Nombre"].strip()}[/opcion]")
+                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
 
             elif opcion_continente == 4:
                 console.print("[titulo]---Países de Europa---[/titulo]")
@@ -79,7 +79,7 @@ def filtrar_por_continente():
                     for fila in lectura:
 
                         if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila["Nombre"].strip()}[/opcion]")
+                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
 
             elif opcion_continente == 5:
                 console.print("---Países de Oceanía---")
@@ -90,7 +90,7 @@ def filtrar_por_continente():
                     for fila in lectura:
 
                         if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila["Nombre"].strip()}[/opcion]")
+                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
 
             else:
                 console.print("[advertencia]La opción del continente no es valida[/advertencia]")
@@ -136,7 +136,7 @@ def filtrar_por_poblacion():
             try:
                 #Si la poblacion es mayor o igual al rango min, y la poblacion es menor o igual al rango max, se imprime
                 if poblacion >= rango_minimo and poblacion <= rango_maximo:
-                    console.print(f"[titulo]{linea["Nombre"]}[/titulo]  |  [opcion]{poblacion}[/opcion]")
+                    console.print(f"[titulo]{linea['Nombre']}[/titulo]  |  [opcion]{poblacion}[/opcion]")
             except (TypeError,ValueError):
                 console.print("[advertencia]Los limites de rango no son validos, debe ingresar un entero positivo[/advertencia]")
                 break
@@ -174,6 +174,6 @@ def filtrar_por_superficie():
 
                 #Si la poblacion es mayor o igual al rango min, y la poblacion es menor o igual al rango max, se imprime
                 if superficie >= rango_minimo and superficie <= rango_maximo:
-                    console.print(f"[titulo]{linea["Nombre"]}[/titulo]  |  [exito]{superficie}[/exito]")
+                    console.print(f"[titulo]{linea['Nombre']}[/titulo]  |  [exito]{superficie}[/exito]")
             except (TypeError, ValueError):
                 console.print("[advertencia]Datos de rango incorrectos[/advertencia]")
