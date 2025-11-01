@@ -85,7 +85,7 @@ def guardar_en_csv(datos_pais, datos):
         with open(datos_pais, "w", newline="", encoding="utf-8") as archivo:
             escritor = csv.writer(archivo)
             escritor.writerows(datos)
-        print(f"[exito]Archivo '{datos_pais}' guardado correctamente.[/exito]")
+        console.print(f"[exito]Archivo '{datos_pais}' guardado correctamente.[/exito]")
 
     except IOError as a:
         print(f"[advertencia]Error al escribir el archivo CSV: {a}[/advertencia]")
