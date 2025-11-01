@@ -11,10 +11,12 @@ console = Console()
 install(show_locals=True)
 def menu_retorno():
     while True:
-        console.print(Panel("""[bold cyan]-----Que deseas hacer ahora?-----
-    1) Volver al menu anterior
-    2) Seguir en el menu actual
----------------------------------[/bold cyan]"""))
+        console.print(Panel("""[bold cyan]
+--------------------------------------        
+    ---Que desea hacer ahora?---
+    [1]: Volver al menú anterior
+    [2]: Continuar en el menú actual
+--------------------------------------[/bold cyan]"""))
         opcion = input("Selecciona una opcion (1 o 2): ").strip()
         if opcion in ["1","2"]:
             return opcion == "1"

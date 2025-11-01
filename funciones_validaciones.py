@@ -71,7 +71,8 @@ def validacion_parcial(pais_buscado):
         
         #Condicional para avisar que no se encontraron coincidencias
     if not pais_encontrado_flag:
-            print(f"El nombre {pais_buscado} no se encontro en el archivo")
+            console.print(f"[advertencia]El nombre {pais_buscado} no se encontro en el archivo[/advertencia]")
+            print(" ")
 
     return pais_encontrado_flag
 

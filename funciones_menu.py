@@ -52,8 +52,8 @@ def progreso(ani):
     return decoracion_p
 
 def bienvenida():
-    recepcion = Text("Sistema de gestion de paises", style="bold cyan")
-    presentacion = Text("Desarrollado por Julieta Caceres characan y Matias Ezequiel Maigua", style= "italic yellow")
+    recepcion = Text("Sistema de gestión de países", style="bold cyan")
+    presentacion = Text("Desarrollado por Julieta Caceres Characan y Matias Ezequiel Maigua", style= "italic yellow")
     panel = Panel(
         Align.center(recepcion + "\n" + presentacion),
         border_style= "bright_blue",
@@ -91,6 +91,7 @@ def buscar_pais():
     limpiar_consola()
     
     pais_buscado = input("Ingrese el nombre del país del que desea consultar su información: ").title().strip()
+    print(" ")
     
     #Guardar el retorno (True/False) de la funcion que valida el dato ingresado
     pais_valido = validar_pais(pais_buscado)
@@ -227,12 +228,13 @@ def menu_estadisticas():
             "Cantidad de países por continente",
         ]
 
-        tabla_menu("Menu de Promedios", opciones)
+        tabla_menu("   Menu de Estadísticas", opciones)
         #Bucle while del menú
         estadisticas_flag: bool = True
         while estadisticas_flag:
 
                 opcion_estadisticas = input("Ingrese el número de la opción para consultar estadisticas: ")
+                print(" ")
 
                 if opcion_estadisticas.isdigit() and opcion_estadisticas.strip() != "":
                     opcion_estadisticas = int(opcion_estadisticas)
@@ -272,12 +274,10 @@ def menu_estadisticas():
 #Función del menú
 def preguntar_opcion():
 
-    limpiar_consola()
-    bienvenida()
+    
     #Bucle while para consultar el número cuantas veces sea necesario (si se ingresa mal)
     menu_flag: bool = True
     while menu_flag:
-        limpiar_consola()
 
         opciones = [
             " Buscar un país por su nombre",
@@ -311,7 +311,6 @@ def preguntar_opcion():
             elif opcion == 4:
                 
                 menu_estadisticas()
-                
                 
             elif opcion == 5:
                 console.print(Panel.fit("---Gracias por usar el programa!---", style="bold green"))
