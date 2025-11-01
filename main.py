@@ -25,8 +25,6 @@ if __name__ == "__main__":
 
 
 #Importación y llamado de funciones del menú
-from funciones_menu import preguntar_opcion, limpiar_consola
-
-#limpiar_consola()
+from funciones_menu import preguntar_opcion
 
 preguntar_opcion()
