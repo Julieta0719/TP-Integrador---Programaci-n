@@ -17,7 +17,7 @@ def filtrar_por_continente():
             "Europa",
             "Oceanía"
         ]
-        tabla_menu("Filtro Cntinentes", opciones)
+        tabla_menu("Filtrar por Continentes", opciones)
         opcion_continente = input("Ingrese la opción del continente: ")
 
         #Validar la opción
