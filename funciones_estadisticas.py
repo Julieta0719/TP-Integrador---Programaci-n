@@ -101,18 +101,31 @@ def contar_pais_por_continente():
     
     limpiar_consola()
 
+    continentes = {
+        "África": ["Africa"],
+        "América": ["North America", "South America"],
+        "Asia": ["Asia"],
+        "Europa": ["Europe"],
+        "Oceanía": ["Oceania"]}
+
     contador = {}
+    
+    for nombre_continente in continentes:
+        contador[nombre_continente] = 0
+
+    #Abrir el archivo en lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
 
         lector = csv.DictReader(archivo)
 
         for pais in lector:
-            continente = pais.get("Continente","").strip()
-            if continente:
-                if continente not in contador:
-                    contador[continente] = 1
-                else:
-                    contador[continente] += 1
+            continente_del_csv = pais.get("Continente","").strip()
+
+            for nombre_continente, valor_diccionario in continentes.items():
+                if continente_del_csv in valor_diccionario:
+                    contador[nombre_continente] += 1
+                    break
+
         console.print("[titulo]---Continentes y sus paises---[/titulo]")
         for continente, cantidad in contador.items():
             console.print(f"[exito]--{continente}: {cantidad} paises[/exito]")
