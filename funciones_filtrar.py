@@ -2,6 +2,9 @@ import csv
 from funciones_menu import limpiar_consola, tabla_menu
 from funciones import menu_retorno
 from datos_consola import console
+from rich.table import Table
+from rich.console import Console
+console = Console()
 
 
 #--------------------------------------------------------------------------------------------------------------------------
@@ -38,9 +41,12 @@ def filtrar_por_continente():
 
         with open("paises.csv","r", encoding="utf-8") as archivo:
             lector = csv.DictReader(archivo)
+            tabla = Table(title="Datos de paises",style="bold yellow")
+            tabla.add_column("pais", style="cyan", no_wrap=True)
             for fila in lector:
                 if fila["Continente"].strip() in datos:
-                    console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
+                    tabla.add_row(fila['Nombre'])
+            console.print(tabla)
         
         if menu_retorno():
             limpiar_consola()
