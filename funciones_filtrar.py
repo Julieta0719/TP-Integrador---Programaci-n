@@ -3,106 +3,49 @@ from funciones_menu import limpiar_consola, tabla_menu
 from funciones import menu_retorno
 from datos_consola import console
 
+
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Funcion de filtrado por continente (Opcion 1 del menu de filtración)
 def filtrar_por_continente():
+    continentes = {
+        1: ("Africa", ["Africa"]),
+        2: ("America", ["North America", "South America"]),
+        3: ("Asia", ["Asia"]),
+        4: ("Europa", ["Europe"]),
+        5: ("Oceania", ["Oceania"])
+    }
     while True:
         limpiar_consola()
+        opciones = []
+        for datos in continentes.values():
+            nombre_continente = str(datos[0]) 
+            opciones.append(nombre_continente)
+        tabla_menu("Filtrar Continentes", opciones)
+        opcion = input("Ingrese la opcion que desee: ").strip()
 
-        opciones = [
-            "África",
-            "América",
-            "Asia",
-            "Europa",
-            "Oceanía"
-        ]
-        tabla_menu("Filtrar por Continentes", opciones)
-        opcion_continente = input("Ingrese la opción del continente: ")
-
-        #Validar la opción
-        if opcion_continente.isdigit() and opcion_continente.strip() != "":
-            opcion_continente = int(opcion_continente)
-        else:
-            console.print("[advertencia]La opción del continente no es valida[/advertencia]")
+        if not opcion.isdigit():
+            console.print("[advertencia]La opcion no es valida[/advertencia]")
             continue
 
-        #Diccionario con key de las opciones y value de los continentes
-        continentes = {1: ["Africa"], 2: ["North America", "South America"], 3:["Asia"], 4: ["Europe"], 5: ["Oceania"]}
-
-        #Si la opcion esta en el diccionario de continentes se guarda en una variable la opcion(int) ingresada como el nombre del continente
-        if opcion_continente in continentes:
-            continente_elegido = continentes[opcion_continente]
-        
-            if opcion_continente == 1:
-                console.print("[titulo]---Países de África---[/titulo]")
-
-                #Abrir el archivo csv en modo de lectura
-                with open("paises.csv", "r", encoding="utf-8") as archivo:
-                    lectura = csv.DictReader(archivo)
-
-                    #Bucle para leer linea por linea
-                    for fila in lectura:
-
-                        #Si el continente de la fila actual coincide con el diccionario de continentes en el indice del continente seleccionado se imprime el país
-                        if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
-
-
-            elif opcion_continente == 2:
-                console.print("[titulo]---Países de América---[/titulo]")
-                
-                with open("paises.csv", "r", encoding="utf-8") as archivo:
-                    lectura = csv.DictReader(archivo)
-
-                    for fila in lectura:
-
-                        if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
-
-            elif opcion_continente == 3:
-                console.print("[titulo]---Países de Asia---[/titulo]")
-
-                with open("paises.csv", "r", encoding="utf-8") as archivo:
-                    lectura = csv.DictReader(archivo)
-
-                    for fila in lectura:
-
-                        if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
-
-            elif opcion_continente == 4:
-                console.print("[titulo]---Países de Europa---[/titulo]")
-
-                with open("paises.csv", "r", encoding="utf-8") as archivo:
-                    lectura = csv.DictReader(archivo)
-
-                    for fila in lectura:
-
-                        if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
-
-            elif opcion_continente == 5:
-                console.print("---Países de Oceanía---")
-                #Abrir el archivo csv en modo de lectura
-                with open("paises.csv", "r", encoding="utf-8") as archivo:
-                    lectura = csv.DictReader(archivo)
-
-                    for fila in lectura:
-
-                        if fila["Continente"].strip() in continentes[opcion_continente]:
-                            console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
-
-            else:
-                console.print("[advertencia]La opción del continente no es valida[/advertencia]")
-                continue
-        else:
-            console.print("[advertencia]La opción no corresponde a ningún continente[/advertencia]")
+        opcion = int(opcion)
+        if opcion not in continentes:
+            console.print("[advertencia]La opcion no corresponde a ningun Continente")
             continue
+
+        opcion_continente, datos = continentes[opcion]
+        console.print(f"[titulo]---Paises de {opcion_continente}---[/titulo]")
+
+        with open("paises.csv","r", encoding="utf-8") as archivo:
+            lector = csv.DictReader(archivo)
+            for fila in lector:
+                if fila["Continente"].strip() in datos:
+                    console.print(f"[opcion]{fila['Nombre'].strip()}[/opcion]")
         
         if menu_retorno():
             limpiar_consola()
             break
+
 
 #--------------------------------------------------------------------------------------------------------------------------
 
