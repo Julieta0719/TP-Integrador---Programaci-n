@@ -24,6 +24,8 @@ def buscar_mayor_poblacion():
 #Funcion para encontrar el país con el menor número de población (Opcion 1 del menú de estadísticas)
 def buscar_menor_poblacion():
 
+    limpiar_consola()
+
     #Abrir archivo en modo de lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
 
