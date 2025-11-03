@@ -54,7 +54,7 @@ def progreso(ani):
 def bienvenida():
     recepcion = Text("Sistema de gestión de países", style="bold cyan")
     presentacion = Text("Desarrollado por Julieta Caceres Characan y Matias Ezequiel Maigua", style= "italic yellow")
-    panel = Panel(
+    panel = Panel.fit(
         Align.center(recepcion + "\n" + presentacion),
         border_style= "bright_blue",
         padding=(1,3),
@@ -318,6 +318,8 @@ def preguntar_opcion():
             else:
                 console.print()
         else:
+            limpiar_consola()
             console.print("[advertencia]La opción debe ser un número entre 1 y 4[/advertencia]")
+            
             menu_flag = True
 

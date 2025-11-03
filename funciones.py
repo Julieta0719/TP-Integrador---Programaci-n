@@ -33,11 +33,11 @@ def obtener_datos(url):
         return datos
 
     except requests.exceptions.RequestException as a:
-        print(f"[adevertencia] Error al conectar con la API: {a}[/advertencia]")
+        console.print(f"[adevertencia] Error al conectar con la API: {a}[/advertencia]")
         return []
 
     except json.JSONDecodeError:
-        print("[advertencia]Error al convertir la respuesta a JSON.[/advertencia]")
+        console.print("[advertencia]Error al convertir la respuesta a JSON.[/advertencia]")
         return []
     
 def validar_datos(paises):
@@ -88,7 +88,7 @@ def guardar_en_csv(datos_pais, datos):
         console.print(f"[exito]Archivo '{datos_pais}' guardado correctamente.[/exito]")
 
     except IOError as a:
-        print(f"[advertencia]Error al escribir el archivo CSV: {a}[/advertencia]")
+        console.print(f"[advertencia]Error al escribir el archivo CSV: {a}[/advertencia]")
 
 
 
@@ -122,5 +122,5 @@ def csv_a_lista(datos_pais):
                     continue
         return paises
     except FileNotFoundError:
-        print(f"[advertencia]Archivo no encontrado: {datos_pais}[/advertencia]")
+        console.print(f"[advertencia]Archivo no encontrado: {datos_pais}[/advertencia]")
         return []

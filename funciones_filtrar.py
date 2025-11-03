@@ -76,7 +76,9 @@ def filtrar_por_poblacion():
     #Abrir el archivo csv para lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
         lectura = csv.DictReader(archivo)
-
+        tabla = Table(title= "[bold yellow]-----Filtrar por Poblacion-----[/bold yellow]", style="bold yellow")
+        tabla.add_column("[bold cyan]Pais[/bold cyan]", style="bold cyan")
+        tabla.add_column("[bold blue]Poblacion[/bold blue]", style="bold blue")
         #Bucle para leer linea por linea
         for linea in lectura:
 
@@ -86,11 +88,11 @@ def filtrar_por_poblacion():
             try:
                 #Si la poblacion es mayor o igual al rango min, y la poblacion es menor o igual al rango max, se imprime
                 if poblacion >= rango_minimo and poblacion <= rango_maximo:
-                    console.print(f"[titulo]{linea['Nombre']}[/titulo] --> [opcion]{poblacion}[/opcion]")
+                    tabla.add_row(f"[titulo]{linea['Nombre']}[/titulo] -->", f"[opcion]{poblacion}[/opcion]")
             except (TypeError,ValueError):
                 console.print("[advertencia]Los limites de rango no son validos, debe ingresar un entero positivo[/advertencia]")
                 break
-
+        console.print(tabla)
 #-------------------------------------------------------------------------------------------------------------------------------------
 
 #Funcion de filtrado por rango de superficie (Opcion 3 del menu de filtración)
@@ -115,7 +117,9 @@ def filtrar_por_superficie():
     #Abrir el archivo csv para lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
         lectura = csv.DictReader(archivo)
-
+        tabla = Table(title= "[bold yellow]-----Filtrar por Poblacion-----[/bold yellow]", style="bold yellow")
+        tabla.add_column("[bold cyan]Pais[/bold cyan]", style="bold cyan")
+        tabla.add_column("[bold blue]Superficie[/bold blue]", style="bold blue")
         #Bucle para leer linea por linea
         for linea in lectura:
 
@@ -125,6 +129,7 @@ def filtrar_por_superficie():
 
                 #Si la poblacion es mayor o igual al rango min, y la poblacion es menor o igual al rango max, se imprime
                 if superficie >= rango_minimo and superficie <= rango_maximo:
-                    console.print(f"[titulo]{linea['Nombre']}[/titulo] --> [exito]{superficie}[/exito]")
+                    tabla.add_row(f"[titulo]{linea['Nombre']}[/titulo] -->", f"[exito]{superficie} km²[/exito]")
             except (TypeError, ValueError):
                 console.print("[advertencia]Datos de rango incorrectos[/advertencia]")
+        console.print(tabla)

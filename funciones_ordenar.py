@@ -1,6 +1,9 @@
 import csv
 from funciones_menu import limpiar_consola
 from datos_consola import console
+from rich.table import Table
+from rich.console import Console
+console = Console()
 
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -9,7 +12,7 @@ def ordenar_paises():
 
     limpiar_consola()
 
-    console.print("[titulo]---Países en orden alfabético---[/titulo]")
+    
 
     #Abrir el archivo csv en modo lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
@@ -22,9 +25,13 @@ def ordenar_paises():
         #Ordenar los países alfabéticamente
         paises_ordenados = sorted(lista_paises, key=lambda pais: pais["Nombre"].lower())
 
+        tabla = Table(title="[bold yellow]-----Países en orden alfabético-----[/bold yellow]",style="bold yellow")
+        tabla.add_column("[bold cyan]Pais[/bold cyan]", style="bold cyan")
+
         #Mostrar los países ordenados
         for pais in paises_ordenados:
-            console.print(f"[exito]{pais['Nombre']}[/exito]")
+            tabla.add_row(f"{pais['Nombre']}",style="bold green")
+        console.print(tabla)
 
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -32,8 +39,6 @@ def ordenar_paises():
 def ordenar_poblacion():
     
     limpiar_consola()
-
-    console.print("[titulo]---Poblaciones de menor a mayor---[/titulo]")
 
     #Abrir el archivo csv en modo lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
@@ -46,9 +51,15 @@ def ordenar_poblacion():
         #Ordenar las poblaciones de menor a mayor
         poblaciones_ordenadas = sorted(lista_poblaciones, key=lambda poblacion: int(poblacion["Población"]))
         
+        tabla = Table(title= "[bold yellow]-----Poblaciones de menor a mayor-----[/bold yellow]", style="bold yellow")
+        tabla.add_column("[bold cyan]Pais[/bold cyan]", style="bold cyan")
+        tabla.add_column("[bold blue]Poblacion[/bold blue]", style="bold blue")
+
         #Mostrar las poblaciones ordenadas
         for poblacion in poblaciones_ordenadas:
-            console.print(f"[opcion]{poblacion['Nombre']}[/opcion] --> [opcion]{poblacion['Población']}[/opcion]")
+            tabla.add_row(f"[opcion]{poblacion['Nombre']}[/opcion] -->", f"[opcion]{poblacion['Población']}[/opcion]")
+        console.print(tabla)
+
 
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -57,7 +68,7 @@ def ordenar_superficie():
 
     limpiar_consola()
 
-    console.print("[titulo]---Superficies en orden ascendente---[/titulo]")
+    
 
     #Abrir el archivo csv en modo lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
@@ -70,6 +81,10 @@ def ordenar_superficie():
         #Ordenar las superficies de manera ascendente
         superficies_ordenadas = sorted(lista_superficies, key=lambda superficie: float(superficie["Superficie"]))
         
+        tabla = Table(title= "[bold yellow]-----Superficies en orden ascendente-----[/bold yellow]", style="bold yellow")
+        tabla.add_column("[bold cyan]Pais[/bold cyan]", style="bold cyan")
+        tabla.add_column("[bold blue]Superficie[/bold blue]", style="bold blue")
         #Mostrar las poblaciones ordenadas
         for superficie in superficies_ordenadas:
-            console.print(f"[opcion]{superficie['Nombre']}[/opcion] --> [exito]{superficie['Superficie']}[/exito]")
+            tabla.add_row(f"[opcion]{superficie['Nombre']}[/opcion] -->", f"[exito]{superficie['Superficie']} km²[/exito]")
+        console.print(tabla)

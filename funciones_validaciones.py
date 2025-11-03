@@ -1,5 +1,8 @@
 import csv
 from datos_consola import console
+from rich.table import Table
+from rich.console import Console
+console = Console()
 
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -7,7 +10,7 @@ from datos_consola import console
 def validar_pais(pais_buscado):
 
     #Eliminar espacios y validar que sea string
-    if pais_buscado.replace(" ","").isalpha():
+    if str(pais_buscado).replace(" ","").isalpha():
         return True
     else:
         console.print("[advertencia]Incorrecto, debe ingresar el nombre de un país[/advertencia]")
@@ -52,7 +55,11 @@ def validacion_parcial(pais_buscado):
     #Se abre el archivo csv para lectura
     with open("paises.csv", "r", newline="", encoding="utf-8") as archivo:
         lectura = csv.DictReader(archivo)
-
+        tabla = Table(title= "[bold yellow]-----Datos Pais-----[/bold yellow]", style="bold yellow")
+        tabla.add_column("[bold cyan]Pais[/bold cyan]", style="bold cyan")
+        tabla.add_column("[bold green]Poblacion[/bold green]", style="bold green")
+        tabla.add_column("[bold blue]Superficie[/bold blue]", style="bold blue")
+        tabla.add_column("[bold white]Continente[/bold white]",style="bold white")
         #Bucle for para leer cada linea del archivo
         for linea in lectura:
             
@@ -61,14 +68,14 @@ def validacion_parcial(pais_buscado):
 
             #Si el string ingresado esta en el nombre del pais se muestran sus datos
             if pais_buscado in paises:
-                console.print(f"""[titulo]Nombre: {linea["Nombre"]}[/titulo]
-                        [info]Población: {linea["Población"]}[/info]
-                        [exito]Superficie: {linea["Superficie"]}[/exito]
-                        [opcion]Continente: {linea["Continente"]}[/opcion]""")
+                tabla.add_row(f"[titulo]{linea["Nombre"]}[/titulo]",
+                        f"[info]{linea["Población"]}[/info]",
+                        f"[exito]{linea["Superficie"]}[/exito]",
+                        f"[opcion]{linea["Continente"]}[/opcion]")
                 
                 #Verdadero si se encontraron coincidencias
                 pais_encontrado_flag = True
-        
+        console.print(tabla)
         #Condicional para avisar que no se encontraron coincidencias
     if not pais_encontrado_flag:
             console.print(f"[advertencia]El nombre {pais_buscado} no se encontro en el archivo[/advertencia]")
