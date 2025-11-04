@@ -33,10 +33,10 @@ def validacion_exacta(pais_buscado):
 
             #Si el país buscado se encuentra en el archivo csv, se imprime su respectiva información
             if pais_buscado == linea["Nombre"]:
-                console.print(f"""[titulo]Nombre: {linea["Nombre"]}[/titulo]
-                        [info]Población: {linea["Población"]}[/info]
-                        [exito]Superficie: {linea["Superficie"]}[/exito]
-                        [opcion]Continente: {linea["Continente"]}[/opcion]""")
+                console.print(f"""[titulo]Nombre: {linea['Nombre']}[/titulo]
+                        [info]Población: {linea['Población']}[/info]
+                        [exito]Superficie: {linea['Superficie']}[/exito]
+                        [opcion]Continente: {linea['Continente']}[/opcion]""")
 
                 #Verdadero si se encontro el pais en la validacion exacta
                 pais_encontrado_flag = True
@@ -68,10 +68,10 @@ def validacion_parcial(pais_buscado):
 
             #Si el string ingresado esta en el nombre del pais se muestran sus datos
             if pais_buscado in paises:
-                tabla.add_row(f"[titulo]{linea["Nombre"]}[/titulo]",
-                        f"[info]{linea["Población"]}[/info]",
-                        f"[exito]{linea["Superficie"]}[/exito]",
-                        f"[opcion]{linea["Continente"]} km²[/opcion]")
+                tabla.add_row(f"[titulo]{linea['Nombre']}[/titulo]",
+                        f"[info]{linea['Población']}[/info]",
+                        f"[exito]{linea['Superficie']}[/exito]",
+                        f"[opcion]{linea['Continente']} km²[/opcion]")
                 
                 #Verdadero si se encontraron coincidencias
                 pais_encontrado_flag = True
