@@ -68,10 +68,10 @@ def validacion_parcial(pais_buscado):
 
             #Si el string ingresado esta en el nombre del pais se muestran sus datos
             if pais_buscado in paises:
-                tabla.add_row(f"[titulo]{linea["Nombre"]}[/titulo]",
-                        f"[info]{linea["Población"]}[/info]",
-                        f"[exito]{linea["Superficie"]}[/exito]",
-                        f"[opcion]{linea["Continente"]}[/opcion]")
+                tabla.add_row(f"[titulo]{linea['Nombre']}[/titulo]",
+                        f"[info]{linea['Población']}[/info]",
+                        f"[exito]{linea['Superficie']}[/exito]",
+                        f"[opcion]{linea['Continente']}[/opcion]")
                 
                 #Verdadero si se encontraron coincidencias
                 pais_encontrado_flag = True
