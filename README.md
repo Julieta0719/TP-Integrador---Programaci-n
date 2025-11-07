@@ -56,4 +56,6 @@ Se le mostrara un mensaje que diga "---Gracias por usar el programa!---" y final
 .
 
 --Participación de los integrantes--
-.
+Matias Ezequiel Maigua: Implementación de los archivos "main", "funciones", "dockerfile", "requirements.txt" "datos_consola", llamado de la API, validación de los datos obtenidos de la API, formateo de datos, cración y validación de existencia del archivo CSV con los datos de los países, importación de librerias y decorado de la consola, creación, importación y llamado del menú de retorno y mensaje de bienvenida
+
+Julieta Cáceres Characán: Implementación de los archivos "funciones_menu", "funciones_validaciones", "funciones_filtrar", "funciones_ordenar", "funciones_estadisticas", Creación de la estructura y funciones del menú principal, y de los submenus de cada opcion. Importaciones y llamados a las funciones que realizan cada tarea específica, validaciones para evitar que el programa se rompa y finalice solo cuando el usuario elija la opción 5, validar datos ingresados y dar mensajes de éxito o de error.
