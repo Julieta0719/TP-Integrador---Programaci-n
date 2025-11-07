@@ -3,6 +3,7 @@ Trabajo Práctico Integrador de Programación I
 Comisión: 1prog2, TT - Integrantes: Matias Ezequiel Maigua, Julieta Cáceres Characán
 
 --Intrucciones de uso--
+
 Clonado del repositorio:
 Copiar la url del repositorio y abrir VSC, iniciar una nueva terminal y colocar el comando "git clone <url>"
 
@@ -53,9 +54,13 @@ Se le mostrara un mensaje que diga "---Gracias por usar el programa!---" y final
 
 
 --Ejemplos de entradas y salidas--
-.
+Al ejecutar el programa, en el menú principal si se ingresa un espacio vacio o una letra, vera un mensaje de error que diga "La opción debe ser un número entre 1 y 5" y se le volvera a pedir ingresar un dato
+Si elige la opción 1 e ingresa "al", se le mostraran los países Albania y Algeria (en inglés) con su respectiva información.
+Ahora si en vez de ingresar un nombre no ingresa nada, simplemente le da a enter, se le mostrara un mensaje de error que diga "Incorrecto, debe ingresar el nombre de un país".
+
 
 --Participación de los integrantes--
+
 Matias Ezequiel Maigua: Implementación de los archivos "main", "funciones", "dockerfile", "requirements.txt" "datos_consola", llamado de la API, validación de los datos obtenidos de la API, formateo de datos, cración y validación de existencia del archivo CSV con los datos de los países, importación de librerias y decorado de la consola, creación, importación y llamado del menú de retorno y mensaje de bienvenida
 
 Julieta Cáceres Characán: Implementación de los archivos "funciones_menu", "funciones_validaciones", "funciones_filtrar", "funciones_ordenar", "funciones_estadisticas", Creación de la estructura y funciones del menú principal, y de los submenus de cada opcion. Importaciones y llamados a las funciones que realizan cada tarea específica, validaciones para evitar que el programa se rompa y finalice solo cuando el usuario elija la opción 5, validar datos ingresados y dar mensajes de éxito o de error.
