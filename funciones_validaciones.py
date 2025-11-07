@@ -71,7 +71,7 @@ def validacion_parcial(pais_buscado):
                 tabla.add_row(f"[titulo]{linea['Nombre']}[/titulo]",
                         f"[info]{linea['Población']}[/info]",
                         f"[exito]{linea['Superficie']}[/exito]",
-                        f"[opcion]{linea['Continente']}[/opcion]")
+                        f"[opcion]{linea['Continente']} km²[/opcion]")
                 
                 #Verdadero si se encontraron coincidencias
                 pais_encontrado_flag = True

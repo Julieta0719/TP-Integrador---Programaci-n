@@ -117,7 +117,7 @@ def filtrar_por_superficie():
     #Abrir el archivo csv para lectura
     with open("paises.csv", "r", encoding="utf-8") as archivo:
         lectura = csv.DictReader(archivo)
-        tabla = Table(title= "[bold yellow]-----Filtrar por Poblacion-----[/bold yellow]", style="bold yellow")
+        tabla = Table(title= "[bold yellow]-----Filtrar por Superficie-----[/bold yellow]", style="bold yellow")
         tabla.add_column("[bold cyan]Pais[/bold cyan]", style="bold cyan")
         tabla.add_column("[bold blue]Superficie[/bold blue]", style="bold blue")
         #Bucle para leer linea por linea
