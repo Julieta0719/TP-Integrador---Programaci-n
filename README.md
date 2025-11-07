@@ -50,3 +50,10 @@ Opcion 4 (Cantidad de países por continente): Se le mostrara el nombre de cada 
 
 -OPCION 5:
 Se le mostrara un mensaje que diga "---Gracias por usar el programa!---" y finalizará la ejecución del programa.
+
+
+--Ejemplos de entradas y salidas--
+.
+
+--Participación de los integrantes--
+.
